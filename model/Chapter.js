@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var db = require('../index');
+const mongoose = require('mongoose');
+const db = require('../index');
 
-var chapterSchema = mongoose.Schema({
+const chapterSchema = mongoose.Schema({
     novelId: {
         type: String,
         required: true,
@@ -26,7 +26,7 @@ var chapterSchema = mongoose.Schema({
 });
 
 // Export Chapter Model
-var Chapter = module.exports = db.dbConnection.model('chapters', chapterSchema);
+const Chapter = module.exports = db.dbConnection.model('chapters', chapterSchema);
 module.exports.get = function (novelId, chapterNumber) {
     return Chapter.findOne({ novelId: novelId, number: chapterNumber }).exec();
 };

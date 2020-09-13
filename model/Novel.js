@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var db = require('../index');
+const mongoose = require('mongoose');
+const db = require('../index');
 
-var novelSchema = mongoose.Schema({
+const novelSchema = mongoose.Schema({
     novelId: {
         type: String,
         index: true,
@@ -30,7 +30,7 @@ var novelSchema = mongoose.Schema({
 });
 
 // Export Novel Model
-var Novel = module.exports = db.dbConnection.model('novels', novelSchema);
+const Novel = module.exports = db.dbConnection.model('novels', novelSchema);
 module.exports.get = function (limit) {
     return Novel.find().sort({ lastChapterUpdate: 'desc' }).limit(limit).exec();
 };
