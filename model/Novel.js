@@ -27,6 +27,9 @@ const novelSchema = mongoose.Schema({
         required: true,
         index: true,
     }
+},
+{
+    bufferCommands: false,
 });
 
 // Export Novel Model
