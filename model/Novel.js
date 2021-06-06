@@ -7,6 +7,10 @@ const novelSchema = mongoose.Schema({
         index: true,
         unique: true
     },
+    coverImage: {
+        data: Buffer,
+        contentType: String
+    },
     title: {
         type: String,
         required: true,
