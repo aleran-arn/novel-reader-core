@@ -1,15 +1,10 @@
 const mongoose = require('mongoose');
-const db = require('../index');
 
 const novelSchema = mongoose.Schema({
     novelId: {
         type: String,
         index: true,
         unique: true
-    },
-    coverImage: {
-        data: Buffer,
-        contentType: String
     },
     title: {
         type: String,
@@ -18,7 +13,11 @@ const novelSchema = mongoose.Schema({
     description: {
         type: String,
     },
-    lastChapterNumber: {
+    coverHref: {
+        type: String,
+        required: true,
+    },
+    lastChapterId: {
         type: String,
         required: true,
     },
@@ -37,7 +36,7 @@ const novelSchema = mongoose.Schema({
 });
 
 // Export Novel Model
-const Novel = module.exports = db.dbConnection.model('novels', novelSchema);
+const Novel = module.exports = mongoose.model('novels', novelSchema);
 module.exports.get = function (limit) {
     return Novel.find().sort({ lastChapterUpdate: 'desc' }).limit(limit).exec();
 };
