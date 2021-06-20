@@ -43,6 +43,7 @@ module.exports.list = function (lastUpdate, limit) {
         .sort({ lastChapterUpdate: 'desc' })
         .limit(limit)
         .exec();
+}
 
 module.exports.getById = function (novelId) {
     return Novel.findOne({ novelId: novelId }).exec();
