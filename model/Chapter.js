@@ -39,8 +39,12 @@ const chapterSchema = mongoose.Schema({
 
 // Export Chapter Model
 const Chapter = module.exports = db.dbConnection.model('chapters', chapterSchema);
-module.exports.get = function (novelId, chapterNumber) {
-    return Chapter.findOne({ novelId: novelId, number: chapterNumber }).exec();
+module.exports.get = function (novelId, chapterId) {
+    return Chapter.findOne({ novelId: novelId, chapterId: chapterId }).exec();
+};
+
+module.exports.getById = function (chapterId) {
+    return Chapter.findOne({ chapterId: chapterId }).exec();
 };
 
 module.exports.getNovelChapterIds = async function (novelId) {
